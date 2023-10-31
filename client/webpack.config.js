@@ -20,14 +20,13 @@ module.exports = () => {
         template: './index.html',
         title: 'Webpack Plugin',
       }),
-      new WorkboxPlugin.GenerateSW({
-        // add more here??
-      }),
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'service-worker.js',
       }), 
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: 'Just Another Text Editor',
         short_name: 'JATE',
         description: 'A text editor that runs in the browser.',
@@ -35,6 +34,8 @@ module.exports = () => {
         // change colors
         backgroud_color: '',
         theme_color: '',
+        start_url: './',
+        publicPath: './',
         icons: {
           src: path.resolve('./src/images/logo.png'),
           sizes: [96, 128, 192, 512],
