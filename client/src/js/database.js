@@ -26,11 +26,11 @@ export const putDb = async (content) => {
   const store = tx.objectStore('jate');
 
   // use the put method to update the data in the database
-  const request = store.put({ content });
+  const request = store.put({ id: 1, value: content });
 
   // get confirmation of the request
   const result = await request;
-  console.log('Database updated', result);
+  console.log('Data saved to the database', result);
 };
 
 // export a function to GET to the database
